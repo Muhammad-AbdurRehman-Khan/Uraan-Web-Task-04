@@ -1,16 +1,10 @@
 /**
- * Keefer Law Firm PLC - Interactive Controller (Task 04)
- * Handles mobile menu toggle, case inquiry form submission, and evaluation view modes.
+ * Keefer Law Firm PLC - Interactive Logic (Task 04)
+ * Handles responsive mobile navigation toggle and case inquiry form submission.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dynamic Footer Year
-  const yearEl = document.getElementById('currentYear');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-
-  // 2. Mobile Navigation Toggle
+  // Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
 
@@ -56,7 +50,7 @@ function handleFormSubmit(event) {
     return;
   }
 
-  // Simple email pattern check
+  // Email pattern check
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
     feedbackEl.className = 'form-feedback error';
@@ -84,56 +78,6 @@ function handleFormSubmit(event) {
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalBtnText;
   }, 600);
-}
-
-/**
- * Switch View Modes for Evaluation
- * @param {'live' | 'split' | 'overlay'} mode
- */
-function setMode(mode) {
-  const wrapper = document.getElementById('comparisonWrapper');
-  const opacityControl = document.getElementById('opacityControl');
-  const buttons = {
-    live: document.getElementById('btnLiveView'),
-    split: document.getElementById('btnSplitView'),
-    overlay: document.getElementById('btnOverlayView')
-  };
-
-  // Remove existing classes
-  wrapper.classList.remove('split-mode', 'overlay-mode');
-
-  // Update button active state
-  Object.keys(buttons).forEach(key => {
-    if (buttons[key]) buttons[key].classList.remove('active');
-  });
-
-  if (buttons[mode]) {
-    buttons[mode].classList.add('active');
-  }
-
-  if (mode === 'split') {
-    wrapper.classList.add('split-mode');
-    opacityControl.style.display = 'none';
-  } else if (mode === 'overlay') {
-    wrapper.classList.add('overlay-mode');
-    opacityControl.style.display = 'flex';
-  } else {
-    opacityControl.style.display = 'none';
-  }
-}
-
-/**
- * Adjust Overlay Opacity in Overlay Mode
- */
-function updateOverlayOpacity(value) {
-  const overlay = document.getElementById('overlayContainer');
-  const opacityVal = document.getElementById('opacityVal');
-  if (overlay) {
-    overlay.style.opacity = (value / 100).toString();
-  }
-  if (opacityVal) {
-    opacityVal.textContent = `${value}%`;
-  }
 }
 
 /**
