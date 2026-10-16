@@ -17,7 +17,7 @@
 </head>
 <body>
 
-  <!-- MAIN PAGE CONTAINER (100% Full-Screen Layout) -->
+
   <div class="site-container">
 
     <!-- ========================================================
@@ -99,26 +99,31 @@
                 Enter your information and get your questions answered quickly and discreetly or call us at: <a href="tel:5404336906" class="form-phone-link">540.433.6906</a>
               </p>
 
-              <!-- Rubber Stamp: CONFIDENTIAL -->
-              <div class="confidential-stamp">
-                <img src="images/confidential.png" alt="Confidential" class="stamp-img">
-              </div>
-
               <!-- Consultation Form -->
               <form id="caseInquiryForm" class="inquiry-form" onsubmit="handleFormSubmit(event)">
-                <div class="form-row">
-                  <label for="clientName" class="form-label">NAME:</label>
-                  <input type="text" id="clientName" name="name" required class="form-input" autocomplete="name">
-                </div>
+                <!-- Top Section: Inputs on Left, Confidential Stamp on Right -->
+                <div class="form-inputs-and-stamp">
+                  <div class="form-inputs-group">
+                    <div class="form-row">
+                      <label for="clientName" class="form-label">NAME:</label>
+                      <input type="text" id="clientName" name="name" required class="form-input" autocomplete="name">
+                    </div>
 
-                <div class="form-row">
-                  <label for="clientEmail" class="form-label">EMAIL:</label>
-                  <input type="email" id="clientEmail" name="email" required class="form-input" autocomplete="email">
-                </div>
+                    <div class="form-row">
+                      <label for="clientEmail" class="form-label">EMAIL:</label>
+                      <input type="email" id="clientEmail" name="email" required class="form-input" autocomplete="email">
+                    </div>
 
-                <div class="form-row">
-                  <label for="clientPhone" class="form-label">PHONE:</label>
-                  <input type="tel" id="clientPhone" name="phone" required class="form-input" autocomplete="tel">
+                    <div class="form-row">
+                      <label for="clientPhone" class="form-label">PHONE:</label>
+                      <input type="tel" id="clientPhone" name="phone" required class="form-input" autocomplete="tel">
+                    </div>
+                  </div>
+
+                  <!-- Rubber Stamp: CONFIDENTIAL -->
+                  <div class="confidential-stamp">
+                    <img src="images/confidential.png" alt="Confidential" class="stamp-img">
+                  </div>
                 </div>
 
                 <div class="form-row textarea-row">

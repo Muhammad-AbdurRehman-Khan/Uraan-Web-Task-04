@@ -295,7 +295,8 @@ button, input, textarea {
 }
 
 .case-form-card {
-  height: 315px;
+  min-height: 315px;
+  height: 100%;
   background: #f1f2f4 url('images/form_bg.jpg') no-repeat center center;
   background-size: cover;
   border: 1px solid #b8bac0;
@@ -365,22 +366,6 @@ button, input, textarea {
   color: #1a1a1a;
 }
 
-/* Floating Confidential Rubber Stamp */
-.confidential-stamp {
-  position: absolute;
-  top: 36px;
-  right: 14px;
-  width: 140px;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.stamp-img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-}
-
 /* Inquiry Form */
 .inquiry-form {
   display: flex;
@@ -390,13 +375,32 @@ button, input, textarea {
   z-index: 2;
 }
 
+/* Top Section: Inputs on Left, Confidential Stamp on Right */
+.form-inputs-and-stamp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-inputs-group {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .form-row {
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
 .form-label {
-  width: 58px;
+  width: 52px;
+  flex-shrink: 0;
   font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 800;
@@ -406,7 +410,8 @@ button, input, textarea {
 
 .form-input {
   flex: 1;
-  max-width: 320px;
+  min-width: 0;
+  max-width: 210px;
   height: 22px;
   padding: 2px 6px;
   background: #ffffff;
@@ -423,6 +428,26 @@ button, input, textarea {
   outline: none;
   border-color: var(--primary-red);
   box-shadow: 0 0 4px rgba(152, 0, 5, 0.4);
+}
+
+/* Confidential Rubber Stamp */
+.confidential-stamp {
+  flex: 0 1 135px;
+  width: 135px;
+  max-width: 135px;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.stamp-img {
+  width: 100%;
+  max-width: 135px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 .textarea-row {
@@ -1044,8 +1069,8 @@ button, input, textarea {
    RESPONSIVE DESIGN BREAKPOINTS
    ========================================================================== */
 
-/* Tablet (≤ 860px) */
-@media (max-width: 860px) {
+/* Tablet (≤ 980px) */
+@media (max-width: 980px) {
   body {
     padding: 0;
   }
@@ -1189,15 +1214,24 @@ button, input, textarea {
     gap: 6px;
   }
 
+  .form-inputs-and-stamp {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .form-inputs-group {
+    width: 100%;
+  }
+
   .form-input {
     max-width: 100%;
   }
 
   .confidential-stamp {
-    position: static;
-    margin: 4px auto 8px auto;
-    width: 120px;
-    display: block;
+    margin: 2px auto;
+    width: 110px;
+    max-width: 110px;
   }
 
   .form-bottom-row {
